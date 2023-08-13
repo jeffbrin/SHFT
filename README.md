@@ -32,11 +32,11 @@
 
 # Team Information
 
-| Name | Student ID | Team Letter |
-| :---:   | :---: | :---: |
-| Jeffrey Bringolf | 2075606 | H |
-| Abdessalam Ait Haqi | 1975004 | H |
-| Pleasure Singh Ghotra | 6150381 | H |
+| Name |
+| :---:   |
+| [Jeffrey Bringolf](JeffBrin.github.io) |
+| Abdessalam Ait Haqi | 
+| Pleasure Singh Ghotra | 
 
 
 
