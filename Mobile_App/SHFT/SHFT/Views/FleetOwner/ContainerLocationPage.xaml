@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.ContainerLocationPage"
+             xmlns:models="clr-namespace:SHFT.Models"
+             Title="Container Location">
+
+    <ScrollView>
+        <Frame Style="{StaticResource FullScreenFrame}">
+            <StackLayout>
+                <Label x:Name="lblAddress" Text="Loading current container location..." Style="{StaticResource GeolocationLabel}"/>
+                <Button Text="Open in Maps" x:Name="btnOpen" Clicked="BtnOpen_Clicked"/>
+            </StackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

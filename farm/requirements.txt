@@ -1,0 +1,8 @@
+seeed-python-reterminal
+pyserial
+pynmea2
+gpiozero
+rpi_ws281x
+grove.py
+python-dotenv
+azure-iot-device

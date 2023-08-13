@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SHFT.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SHFT"
+    xmlns:views="clr-namespace:SHFT.Views"
+    xmlns:services="clr-namespace:SHFT.Services"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="{StaticResource Tertiary}"
+    Shell.TabBarUnselectedColor ="{StaticResource ToolbarColors}">
+
+    <ShellContent Route="Login" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Route="Signup" ContentTemplate="{DataTemplate views:SignupPage}"/>
+    <ShellContent Route="ContainerSelect" ContentTemplate="{DataTemplate views:ContainerSelect}"/>
+    <ShellContent Route="PlantDashboard" ContentTemplate="{DataTemplate views:PlantDashboardPage}" />
+
+    <TabBar Route="FleetOwner" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:DashboardSecurity}" 
+                      Icon="dashboard.png"/>
+        <ShellContent Title="Location" ContentTemplate="{DataTemplate views:ContainerLocationPage}" 
+                      Icon="location.png"/>
+        <ShellContent Title="History" ContentTemplate="{DataTemplate views:HistoricalData}" 
+                      Icon="chart.png"/>
+        <ShellContent Title="Actuator" ContentTemplate="{DataTemplate views:SecurityTogglePage}"
+                      Icon="toggle.png"/>
+        <ShellContent Title="Account" ContentTemplate="{DataTemplate views:AccountPage}"
+                      Icon="person.png"/>
+    </TabBar>
+
+    <TabBar Route="FarmTechnician" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:PlantDashboardPage}" Icon="dashboard.png"/>
+        <ShellContent Title="History" ContentTemplate="{DataTemplate views:HistoricalPlantData}" Icon="chart.png"/>
+        <ShellContent Title="Account" ContentTemplate="{DataTemplate views:AccountPage}" Icon="person.png"/>
+    </TabBar>
+
+</Shell>

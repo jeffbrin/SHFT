@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+             x:Class="SHFT.Views.PlantDashboardPage"
+             Title="Dashboard">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="errorLabel">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--Plant Information-->
+            <VerticalStackLayout x:Name="plantGauges">
+                <!--Temperature Gauge-->
+                <Frame x:Name="temperatureFrame" Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Temperature" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="temperature_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="TemperatureGauge"
+                                                    EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="TempGauge1"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                        <gauge:RadialRange x:Name="TempGauge2"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="TempGauge3"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="TempGauge4"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="TempGauge5"
+                                                          EndValue="124"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="TempGauge6"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F" />
+                                        <gauge:RadialRange x:Name="TempGauge7"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="TempGauge8"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="TempGauge9"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="TempGauge10"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="TempGauge11"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                                   DirectionUnit="Angle"
+                                                   DirectionValue="90"
+                                                   PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Temperature.Value, StringFormat='{0:F2} °C'}"
+                                                   FontSize="Title"
+                                                   FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Temperature.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="TemperatureErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Humidity Gauge-->
+                <Frame x:Name="humidityFrame" Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Humidity" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                        <gauge:SfRadialGauge.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="humidity_Tapped"/>
+                        </gauge:SfRadialGauge.GestureRecognizers>
+                        <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="HumidityGauge"
+                                                    EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="HumiGauge1"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                        <gauge:RadialRange x:Name="HumiGauge2"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="HumiGauge3"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="HumiGauge4"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="HumiGauge5"
+                                                          EndValue="124"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="HumiGauge6"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F" />
+                                        <gauge:RadialRange x:Name="HumiGauge7"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="HumiGauge8"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="HumiGauge9"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="HumiGauge10"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="HumiGauge11"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                                   DirectionUnit="Angle"
+                                                   DirectionValue="90"
+                                                   PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Humidity.Value, StringFormat='{0:F2} %'}"
+                                                   FontSize="Title"
+                                                   FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Humidity.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="HumidityErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Water Level Gauge-->
+                <Frame x:Name="waterLevelFrame" Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Water Level" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="waterLevel_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="WaterLevelGauge"
+                                                    EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="WaterLevelGaugeExcellent"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C"/>
+                                        <gauge:RadialRange x:Name="WaterLevelGaugeGood"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F" />
+                                        <gauge:RadialRange x:Name="WaterLevelGaugeMedium"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="WaterLevelGaugeBad"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F"/>
+                                        <gauge:RadialRange x:Name="WaterLevelGaugeTerrible"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F" />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                                   DirectionUnit="Angle"
+                                                   DirectionValue="90"
+                                                   PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding WaterLevel.Value, StringFormat='{0:F2} cm'}"
+                                                   FontSize="Title"
+                                                   FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding WaterLevel.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="WaterLevelErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Soil Moisture Gauge-->
+                <Frame x:Name="SoilMoistureFrame" Style="{StaticResource DashboardOptionFrame}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SoilMoistureTapGestureRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Plant Moisture" HorizontalOptions="StartAndExpand"/>
+                        <Image HeightRequest="20" x:Name="soilMoistureStateImage">
+                        </Image>
+                    </StackLayout>
+                </Frame>
+            </VerticalStackLayout>
+
+            <!--Container Actuators-->
+            <VerticalStackLayout x:Name="containerActuators">
+                <!--Fan Controller-->
+                <Frame BorderColor="Black">
+                    <StackLayout Style="{StaticResource ActuatorStack}">
+                        <Label Text="Control Fan" Style="{StaticResource ActuatorLabel}"/>
+                        <Switch IsToggled="{Binding FanState.Value}" Toggled="FanState_Switch_Toggled" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Light Controller-->
+                <Frame Margin="0,10" BorderColor="Black">
+                    <StackLayout Style="{StaticResource ActuatorStack}">
+                        <Label Text="Control Light" Style="{StaticResource ActuatorLabel}"/>
+                        <Switch IsToggled="{Binding LightState.Value}" Toggled="LightState_Switch_Toggled" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Doorlock Controller-->
+                <Frame BorderColor="Black">
+                    <StackLayout Style="{StaticResource ActuatorStack}">
+                        <Label Text="Control Door Lock" Style="{StaticResource ActuatorLabel}"/>
+                        <Switch IsToggled="{Binding DoorLockState.Value}" Toggled="DoorLock_Switch_Toggled" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

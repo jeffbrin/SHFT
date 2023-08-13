@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.DashboardSecurity"
+             xmlns:charts="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:lc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+             Title="Dashboard">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="errorLabel">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout x:Name="SecurityGauges">
+                <!--Noise Gauge-->
+                <Frame Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Noise" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge x:Name="noiseGauge">
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="noise_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="NoiseGauge"
+                                                    EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="NoiseGaugeExcellent"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F"/>
+                                        <gauge:RadialRange x:Name="NoiseGaugeGood"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="NoiseGaugeMedium"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="NoiseGaugeBad"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="NoiseGaugeTerrible"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C " />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                                   DirectionUnit="Angle"
+                                                   DirectionValue="90"
+                                                   PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Noise.Value, StringFormat='{0:F2} dB'}"
+                                                   FontSize="Title"
+                                                   FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Noise.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="NoiseErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+                <!--Luminosity Gauge-->
+                <Frame Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Luminosity" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="luminosity_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="LuminosityGauge"
+                                              EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="LumGauge1"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                        <gauge:RadialRange x:Name="LumGauge2"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="LumGauge3"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="LumGauge4"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="LumGauge5"
+                                                          EndValue="124"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="LumGauge6"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F" />
+                                        <gauge:RadialRange x:Name="LumGauge7"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="LumGauge8"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="LumGauge9"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="LumGauge10"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="LumGauge11"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Luminosity.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                       DirectionUnit="Angle"
+                                       DirectionValue="90"
+                                       PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Luminosity.Value, StringFormat='{0:D3} lx'}"
+                                                   FontSize="25"
+                                                   FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="LuminosityErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="GeoGauges">
+                <!--Vibration Gauge-->
+                <Frame Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Vibration" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="vibration_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="VibrationGauge"
+                                              EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="VibGaugeExcellent"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F"/>
+                                        <gauge:RadialRange x:Name="VibGaugeGood"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="VibGaugeMedium"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="VibGaugeBad"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="VibGaugeTerrible"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C " />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Vibration.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                       DirectionUnit="Angle"
+                                       DirectionValue="90"
+                                       PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Vibration.Value, StringFormat='{0:F2}'}"
+                                                   FontSize="25"
+                                                   FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="VibrationErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+                <!--Pitch Gauge-->
+                <Frame Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Pitch" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="pitch_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="PitchGauge"
+                                              EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="PitchGauge1"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                        <gauge:RadialRange x:Name="PitchGauge2"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="PitchGauge3"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="PitchGauge4"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="PitchGauge5"
+                                                          EndValue="124"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="PitchGauge6"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F" />
+                                        <gauge:RadialRange x:Name="PitchGauge7"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="PitchGauge8"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="PitchGauge9"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="PitchGauge10"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="PitchGauge11"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Pitch.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                       DirectionUnit="Angle"
+                                       DirectionValue="90"
+                                       PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Pitch.Value, StringFormat='{0:F2}'}"
+                                                       FontSize="25"
+                                                       FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="PitchErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+                <!--Roll Gauge-->
+                <Frame Style="{StaticResource DashboardOptionFrame}">
+                    <StackLayout>
+                        <Label Text="Roll" Style="{StaticResource DashboardOptionLabel}"/>
+                        <gauge:SfRadialGauge>
+                            <gauge:SfRadialGauge.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="roll_Tapped"/>
+                            </gauge:SfRadialGauge.GestureRecognizers>
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis x:Name="RollGauge"
+                                              EnableLoadingAnimation="True">
+                                    <!--Ranges-->
+                                    <gauge:RadialAxis.Ranges>
+                                        <gauge:RadialRange x:Name="RollGauge1"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                        <gauge:RadialRange x:Name="RollGauge2"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="RollGauge3"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="RollGauge4"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="RollGauge5"
+                                                          EndValue="124"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="RollGauge6"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#24AE5F" />
+                                        <gauge:RadialRange x:Name="RollGauge7"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#4FBA6F" />
+                                        <gauge:RadialRange x:Name="RollGauge8"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F0C419"/>
+                                        <gauge:RadialRange x:Name="RollGauge9"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#F29C1F"/>
+                                        <gauge:RadialRange x:Name="RollGauge10"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E57E25" />
+                                        <gauge:RadialRange x:Name="RollGauge11"
+                                                          StartWidth="20"
+                                                          EndWidth="20"
+                                                          Fill="#E64C3C" />
+                                    </gauge:RadialAxis.Ranges>
+
+                                    <!--Pointer-->
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:NeedlePointer Value="{Binding Roll.Value}"
+                                             NeedleLengthUnit="Factor"
+                                             NeedleLength="0.94"
+                                             NeedleStartWidth="10"
+                                             NeedleEndWidth="10"
+                                             NeedleFill="#E84B3B"
+                                             KnobRadius="0.2"
+                                             KnobStrokeThickness="0.08"
+                                             KnobStroke="#BDC3C7"
+                                             KnobFill="#464F5D"/>
+                                    </gauge:RadialAxis.Pointers>
+
+                                    <!--Annotation-->
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation
+                                       DirectionUnit="Angle"
+                                       DirectionValue="90"
+                                       PositionFactor="0.5">
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label Text="{Binding Roll.Value, StringFormat='{0:F2}'}"
+                                                       FontSize="25"
+                                                       FontAttributes="Bold"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Style="{StaticResource errorLabel}" x:Name="RollErrorLabel"/>
+                    </StackLayout>
+                </Frame>
+            </VerticalStackLayout>
+
+            <!--Motion Sensor State-->
+            <Frame Style="{StaticResource DashboardOptionFrame}">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Motion Sensor" HorizontalOptions="StartAndExpand"/>
+                    <Image x:Name="MotionSensorImage" HeightRequest="20">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding MotionSensor.Value}" Value="True">
+                                <Setter Property="Source" Value="check_mark"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Image" Binding="{Binding MotionSensor.Value}" Value="False">
+                                <Setter Property="Source" Value="x_mark"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

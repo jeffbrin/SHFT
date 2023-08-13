@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.HistoricalPlantData"
+             xmlns:charts="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="Historical Plant Data">
+    <ScrollView>
+        <Frame Style="{StaticResource FullScreenFrame}" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+            <VerticalStackLayout>
+                <Label Text="Unit"/>
+                <charts:CartesianChart x:Name="historicalPlantDataChart" TooltipTextSize="30" HeightRequest="200" ZoomMode="X"
+                               Series="{Binding Series}" XAxes="{Binding XAxis}" YAxes="{Binding YAxis}"/>
+                <Label Text="Hours" HorizontalOptions="End"/>
+                <Picker x:Name="dataPicker" HorizontalOptions="Center" SelectedIndexChanged="pickDiffData_SelectedIndexChanged"/>
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.LoginPage"
+             Title="Login">
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--Sign up-->
+            <Label Style="{StaticResource TitleLabel}" Text="First Visit?" FontAttributes="Bold"/>
+            <Border Style="{StaticResource RoundedButton}">
+                <Button x:Name="btnToSignup" Text="Sign Up" Clicked="btnToSignup_Clicked" FontAttributes="Bold"/>
+            </Border>
+
+            <!--Divider-->
+            <BoxView Style="{StaticResource Divider}"/>
+
+            <!--Login-->
+            <Label Style="{StaticResource TitleLabel}" Text="Login"/>
+
+            <!--Email-->
+            <Label Style="{StaticResource EntryLabel}" Text="Email"/>
+            <Border Style="{StaticResource RoundedEntryBorder}">
+                <Entry x:Name="entryEmail"/>
+            </Border>
+
+            <!--Password-->
+            <StackLayout Orientation="Horizontal">
+                <Label Style="{StaticResource EntryLabel}" Text="Password" HorizontalOptions="StartAndExpand"/>
+                <Button Style="{StaticResource Hyperlink}" Text="Forgot password?" HorizontalOptions="End" Margin="5,0" Padding="0" Clicked="PasswordForgotBtn"/>
+            </StackLayout>
+            <Border Style="{StaticResource RoundedEntryBorder}">
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="entryPassword" 
+                       IsPassword="True"
+                       HorizontalOptions="FillAndExpand"/>
+                    <ImageButton x:Name="toggleImage"
+                                 Source="closed_eye" 
+                                 Clicked="TogglePasswordVisibility"
+                                 WidthRequest="24" 
+                                 HeightRequest="24"
+                                 HorizontalOptions="End"
+                                 Margin="10"/>
+                </StackLayout>
+            </Border>
+
+            <!--Remember me-->
+            <StackLayout Orientation="Horizontal" Margin="0,40">
+                <CheckBox x:Name="rememberMeCheckBox"/>
+                <Label Text="Remember me" Style="{StaticResource EntryLabel}" Margin="0,10"/>
+            </StackLayout>
+
+            <!--Login Button-->
+            <Border Style="{StaticResource InversedButtonBorder}">
+                <Button Style="{StaticResource InversedButtonStyle}" x:Name="btnLogin" Text="Login" Clicked="btnLogin_Clicked"/>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

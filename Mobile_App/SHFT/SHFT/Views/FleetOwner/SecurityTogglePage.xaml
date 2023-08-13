@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.SecurityTogglePage"
+             Title="Controls">
+    <ScrollView>
+        <StackLayout>
+            <!--Buzzer Controller-->
+            <Frame Style="{StaticResource ActuatorFrame}">
+                <StackLayout Style="{StaticResource ActuatorStack}">
+                    <Label Text="Control Buzzer" Style="{StaticResource ActuatorLabel}"/>
+                    <Switch IsToggled="{Binding BuzzerState.Value}" Toggled="ControlBuzzer_Toggle" VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!--Door Lock Controller-->
+            <Frame Style="{StaticResource ActuatorFrame}">
+                <StackLayout Style="{StaticResource ActuatorStack}">
+                    <Label Text="Door Locked" Style="{StaticResource ActuatorLabel}"/>
+                    <Switch IsToggled="{Binding DoorState.Value}" Toggled="ControlDoorLock_Toggle"  VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!--Interval Controller-->
+            <Frame Style="{StaticResource ActuatorFrame}">
+                <StackLayout  Style="{StaticResource ActuatorStack}">
+                    <Label Text="New Data Upload Interval" Style="{StaticResource ActuatorLabel}"/>
+                    <Entry x:Name="telemetryIntervalEntry" Placeholder="0" HorizontalTextAlignment="Center"/>
+                    <Button x:Name="NewTelemetryIntervalButton" 
+                            Text="Apply" 
+                            Clicked="NewTelemetryIntervalButton_Clicked"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Team: SHFT- 
+    Semester: App Dev and Connected project 28/04/2023
+    Course Name: App Dev III
+    Description:Used to show the historical data for the Noise and Lumisity     
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.HistoricalData"
+             xmlns:charts="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="Historical Security Data">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="shareicon.png" Clicked="ShareHistoricalData"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <Frame Style="{StaticResource FullScreenFrame}" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+            <VerticalStackLayout>
+                <Label Text="Unit"/>
+                <charts:CartesianChart x:Name="ownerHistorical" TooltipTextSize="30" HeightRequest="200" ZoomMode="X"
+                                   Series="{Binding Series}" XAxes="{Binding XAxis}" YAxes="{Binding YAxis}"/>
+                <Label Text="Hours" HorizontalOptions="End"/>
+                <Picker x:Name="pickDiffData" HorizontalOptions="Center" SelectedIndexChanged="PickDiffData_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Noise</x:String>
+                            <x:String>Luminosity</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

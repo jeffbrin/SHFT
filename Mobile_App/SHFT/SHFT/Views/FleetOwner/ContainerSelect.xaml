@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:SHFT.Models"
+             x:Class="SHFT.Views.ContainerSelect"
+             Title="Select a Container">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--Containers-->
+            <CollectionView x:Name="collectionViewContainers">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame x:Name="ContainerFrame" Style="{StaticResource OptionFrame}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ContainerClicked" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="5*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2" Grid.Row="1" Grid.Column="1" Source="container.png" Style="{StaticResource OptionImage}"/>
+                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Text="{Binding Path=Name}" Style="{StaticResource OptionLabel}"/>
+                                <Label Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Text="{Binding Path=Description}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <!--Find container hyperlink-->
+            <Button x:Name="FindContainerBtn"
+                    Style="{StaticResource Hyperlink}"
+                    Text="Don't see your container?"
+                    Clicked="FindContainerBtn_Clicked"
+                    HorizontalOptions="Start"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

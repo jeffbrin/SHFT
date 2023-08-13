@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SHFT.Views.SignupPage"
+             Title="Sign Up">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--Fleet Owner Option-->
+            <Frame x:Name="frameFleetOwner" Style="{StaticResource OptionFrame}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frameFleetOwner_Clicked" />
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.RowSpan="2" Grid.Row="1" Grid.Column="1" Source="container.png" Style="{StaticResource OptionImage}"/>
+                    <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Text="Fleet Owner" Style="{StaticResource OptionLabel}"/>
+                    <Label Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Text="The owner of the container."/>
+                </Grid>
+            </Frame>
+
+            <!--Farming technician option-->
+            <Frame x:Name="frameFarmingTech" Style="{StaticResource OptionFrame}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frameFarmingTech_Clicked" />
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.RowSpan="2" Grid.Row="1" Grid.Column="1" Source="person.png" Style="{StaticResource OptionImage}"/>
+                    <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Text="Farm Technician" Style="{StaticResource OptionLabel}"/>
+                    <Label Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Text="The person taking care of the crops."/>
+                </Grid>
+            </Frame>
+
+            <!--Information display-->
+            <Button Style="{StaticResource Hyperlink}" Text="What's the difference?" HorizontalOptions="End" Margin="5,0" Padding="0" Clicked="OpenPlanLink"/>
+
+            <!--Email-->
+            <Label Text="Email" Style="{StaticResource EntryLabel}"/>
+            <Border Style="{StaticResource RoundedEntryBorder}">
+                <Entry x:Name="entryEmail"/>
+            </Border>
+
+            <!--Display Name-->
+            <Label Text="Display Name" Style="{StaticResource EntryLabel}"/>
+            <Border Style="{StaticResource RoundedEntryBorder}">
+                <Entry x:Name="entryDisplayName"/>
+            </Border>
+
+            <!--Password-->
+            <Label Text="Password" Style="{StaticResource EntryLabel}"/>
+            <Border Style="{StaticResource RoundedEntryBorder}">
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="entryPassword" 
+                       IsPassword="True"
+                       HorizontalOptions="FillAndExpand"/>
+                    <ImageButton x:Name="toggleImage"
+                                 Source="closed_eye" 
+                                 Clicked="TogglePasswordVisibility"
+                                 WidthRequest="24" 
+                                 HeightRequest="24"
+                                 HorizontalOptions="End"
+                                 Margin="10"/>
+                </StackLayout>
+            </Border>
+
+            <!--Confirm Password-->
+            <Label Text="Confirm Password" Style="{StaticResource EntryLabel}"/>
+            <Border Style="{StaticResource RoundedEntryBorder}">
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="entryConfirmPassword" 
+                       IsPassword="True"
+                       HorizontalOptions="FillAndExpand"/>
+                    <ImageButton x:Name="toggleConfirmImage"
+                                 Source="closed_eye" 
+                                 Clicked="ToggleConfirmPasswordVisibility"
+                                 WidthRequest="24" 
+                                 HeightRequest="24"
+                                 HorizontalOptions="End"
+                                 Margin="10"/>
+                </StackLayout>
+            </Border>
+
+            <!--Sign up-->
+            <Border Style="{StaticResource RoundedButton}">
+                <Button Text="Sign Up" x:Name="btnSignup" Clicked="btnSignup_Clicked"/>
+            </Border>
+
+            <!--Back to login-->
+            <Button Style="{StaticResource Hyperlink}" x:Name="btnToLogin" Text="Back to login" Clicked="btnToLogin_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
