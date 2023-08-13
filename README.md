@@ -230,18 +230,7 @@ The following are the commands to run the application:
 python3 farm.py
 ```
 
-Set your IOTHUB_DEVICE_CONNECTION_STRING in your .env file to 
-
-```"HostName=ConnectedIoT.azure-devices.net;DeviceId=Device1;SharedAccessKey=gJFLoYSjY2jGWfe49cyfS5umU9RQECjOlyArTeYwU1c="```
-
-## Test accounts
-You may signup and create a test account or you can use the following.
-
-- teacher@owner.co
-- teacher@farmer.co
-
-The password for each is password
-
+Set your IOTHUB_DEVICE_CONNECTION_STRING in your .env file to the device connection string for your IoT Hub device.
 
 # Future Work
 
