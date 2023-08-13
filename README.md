@@ -34,7 +34,7 @@
 
 | Name |
 | :---:   |
-| [Jeffrey Bringolf](JeffBrin.github.io) |
+| [Jeffrey Bringolf](https://jeffbrin.github.io/) |
 | Abdessalam Ait Haqi | 
 | Pleasure Singh Ghotra | 
 
